@@ -1,6 +1,6 @@
 import './App.css';
 import React, {useState, useEffect} from "react";
-import {Products} from "./Products";
+import Products from "./Products.json";
 import {useForm} from "react-hook-form";
 
 //VIEW PRODUCTS AND SEARCH HERE
@@ -12,6 +12,7 @@ const Script = () => {
     const [cartTotal, setCartTotal] = useState(0);
     const [viewer,setViewer] = useState(0);
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const [dataF,setDataF] = useState({});
 
     useEffect(() => {
         total();
@@ -69,7 +70,8 @@ const Script = () => {
         setViewer(1);
     }
 
-    const order = () => {
+    const order = data => {
+        setDataF(data);
         setViewer(2);
     }
 
@@ -201,7 +203,13 @@ const Script = () => {
                 </div>
                 <div className="ml-5  p-10 xl:basis-4/5">
 
-                {/*YOUR CODE GOES HERE FOR PAYMENT/CONFIRMATION PAGE*/}
+                
+                <h2 className="text-3xl font-extrabold tracking-tight text-gray-600 category-title">Order Summary</h2>
+                <p className="tracking-tight text-gray-600 category-title">Name: {dataF.fullName}</p>
+                <p className="tracking-tight text-gray-600 category-title">Email: {dataF.email}</p>
+                <p className="tracking-tight text-gray-600 category-title">Credit Card: {dataF.creditCard}</p>
+                <p className="tracking-tight text-gray-600 category-title">Location: {dataF.city},{dataF.state} {dataF.zip}</p>
+        
             
                 </div>
             </div>
