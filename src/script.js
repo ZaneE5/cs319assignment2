@@ -115,7 +115,7 @@ const Script = () => {
                 </div>
 
                 <div className="form-group">
-                    <input {...register("creditCard", { required: true })} placeholder="Credit Card" className="form-control"/>
+                    <input {...register("creditCard", { required: true })} minlength="16" maxlength="16" placeholder="Credit Card" className="form-control"/>
                     {errors.creditCard && <p className="text-danger">Credit Card is required.</p>}
                 </div>
 
