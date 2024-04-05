@@ -25,6 +25,7 @@ const Script = () => {
 
     const addToCart = (product) => {
         setCart([...cart, product]);
+        product.quantity ++;
     }
 
     const removeFromCart = (product) => {
@@ -38,6 +39,7 @@ const Script = () => {
         });
         if (itemFound) {
             setCart(updatedCart);
+            product.quantity --;
         }
     }
 
@@ -125,6 +127,11 @@ const Script = () => {
                                     </h3>
                                     <p className="mt-1 text-sm text-gray-500">Rating: {product.rating.rate}</p>
                                     <p className="text-sm font-medium text-green-600">${product.price}</p>
+                                    <h3 className="text-sm text-gray-700">
+                                        <a href={product.href}>
+                                            <span style={{ fontSize: '16px', fontWeight: '600' }}>{"Quantity:" + product.quantity}</span>
+                                        </a>
+                                    </h3>
                                 </div>
                             </div>
                         </div>
